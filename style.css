@@ -465,6 +465,34 @@ main h2 {
     scroll-behavior: smooth;
 }
 
+.drinksListContainer::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+.drinksListContainer::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+    margin-left: 10px;
+
+}
+
+/* Handle */
+.drinksListContainer::-webkit-scrollbar-thumb {
+    background: #b3a9ac;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.drinksListContainer::-webkit-scrollbar-thumb:hover {
+    background: #16111b;
+}
+
+.drinksListContainer::-webkit-scrollbar-thumb {
+    background: #b3a9ac;
+    border-radius: 10px;
+}
+
 
 /* sliding background */
 
