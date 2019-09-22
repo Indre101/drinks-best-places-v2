@@ -22,7 +22,7 @@ body {
 
 /*because the bg image is a class, i can't make it repeat for the rest of the page- i think that's why*/
 .landingPage {
-    background-image: linear-gradient(to bottom, #07081399, #000000);
+    background-image: linear-gradient(to bottom, #ca54abb8, #0f0810);
     background-size: cover;
     background-repeat: repeat-x;
     height: 100vh;
@@ -38,7 +38,8 @@ body {
 }
 
 .secondPage {
-    background-image: linear-gradient(to bottom, #07081399, #000000), url(./img-icons/img/backgroundLandingPage.jpeg);
+    background-image: linear-gradient(to bottom, #ca54abb8, #0f0810), url(./img-icons/img/backgroundLandingPage.jpeg);
+    height: 100vh;
 }
 
 .placeDescribtion {
@@ -75,6 +76,7 @@ h3 {
     overflow-y: scroll;
     width: 100%;
     margin-top: -0.6rem;
+    border-radius: 0 0 15px 15px;
 }
 
 
@@ -122,8 +124,8 @@ h3 {
     width: 300px;
     height: 5rem;
     transition: opacity 0.3s ease-in-out;
-    position: absolute;
-
+    /* position: absolute; */
+    border-radius: 15px 15px 0 0;
     /* width: 300px; */
 }
 
@@ -236,7 +238,9 @@ main h2 {
     flex-direction: column;
     align-items: center;
     box-shadow: 2px 2px 2px 2px #464546;
-    background-color: #010101;
+    /* background-color: #010101; */
+    background-color: white;
+    border-radius: 15px;
 }
 
 /* Create a custom checkbox */
@@ -392,8 +396,10 @@ main h2 {
     margin-bottom: 3rem;
     margin-top: 0;
     font-size: 35px;
-    color: #707070;
-    background-color: #EFE7E7;
+    color: white;
+    background-color: gray;
+    /* color: #707070;
+    background-color: #EFE7E7; */
     opacity: 0.7;
 }
 
@@ -413,6 +419,7 @@ main h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
 }
 
@@ -453,6 +460,9 @@ main h2 {
     grid-template-columns: repeat(auto-fill, minmax(300px, auto));
     grid-gap: 4rem;
     align-items: flex-start;
+    height: 600px;
+    overflow: scroll;
+    scroll-behavior: smooth;
 }
 
 
