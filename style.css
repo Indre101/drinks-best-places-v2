@@ -28,8 +28,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    /* justify-content: space-around; */
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -182,7 +181,23 @@ h3 {
     display: flex;
     width: 90vw;
     justify-content: center;
-    justify-content: space-between;
+}
+
+.arrow {
+    width: 7rem;
+    bottom: -100px;
+    object-fit: contain;
+    animation: pulseArrow 1s ease-in-out infinite alternate;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+@keyframes pulseArrow {
+    100% {
+        transform: translateY(-30px);
+        opacity: 1;
+    }
 }
 
 main h1,
@@ -212,6 +227,7 @@ main h2 {
     z-index: 1;
     opacity: 0.9;
     padding: 15%;
+    display: block;
 }
 
 .show {
@@ -351,6 +367,7 @@ main h2 {
     width: 30px;
     cursor: pointer;
     margin: 10px;
+    display: none;
 }
 
 .dropdown {
@@ -699,5 +716,49 @@ slide:nth-child(4) {
     .drinkCategoriesAndDrinks {
         display: grid;
         grid-template-columns: 1fr;
+    }
+
+    .oneCategoryContainer {
+        justify-self: center;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .oneCategoryContainer {
+        justify-self: flex-end;
+    }
+
+}
+
+
+@media only screen and (max-width: 800px) {
+
+    .secondPage {
+        grid-template-columns: 1fr;
+    }
+
+
+    .filterbtn {
+        display: block;
+    }
+
+    .checkbox {
+        flex-direction: column;
+        border: none;
+        background-color: #0a0505d9;
+        position: absolute;
+        height: auto;
+        z-index: 1;
+        opacity: 0.9;
+        padding: 2%;
+        display: none;
+    }
+
+    .container {
+        margin-bottom: 20px;
+    }
+
+    .search-box {
+        margin: 20px 0px;
     }
 }

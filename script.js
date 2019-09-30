@@ -3,8 +3,6 @@ const drinksUrl = `https://spreadsheets.google.com/feeds/list/${sreadsheetId}/1/
 const placesUrl = `https://spreadsheets.google.com/feeds/list/${sreadsheetId}/2/public/values?alt=json`;
 6
 // const template = document.querySelector("template").content;
-const categoryBtnTemplate = document.getElementById("categoryBtnTemplate")
-  .content;
 
 // CATEGORIES JUST NAME AND ITS CONTAINER
 const categoryNameTemplate = document.querySelector(".categoryNameTemplate")
@@ -65,13 +63,7 @@ const createDrinkObj = drinkObject => {
 // SECOND FUNCTION CREATED CATEGORY BUTTONS
 function addCategoryButtons() {
   const filteredCategoriesNamesOnly = filteredCategoriesArray();
-  filteredCategoriesNamesOnly.forEach(drinkObj => {
-    const categoryBtnTemplateClone = categoryBtnTemplate.cloneNode(true);
-    categoryBtnTemplateClone.querySelector("button").textContent = drinkObj;
-    document
-      .querySelector(".categoryContainer")
-      .prepend(categoryBtnTemplateClone);
-  });
+
 }
 
 // THIRD FUNCTION TO SEPARATE AND ADD DRINK CARDS TO RIGHT CATEGORIES

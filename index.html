@@ -23,25 +23,21 @@
         <img src="./img-icons/img/logo.png" alt="" />
       </article>
 
-      <h2>I feel like...</h2>
-
       <article class="categoryContainer">
-        <template id="categoryBtnTemplate">
-          <a class="categoryLink cursor-pointer" href=""
-            ><button class="categoryBtn ">Coffee</button></a
-          >
-        </template>
-        <a href="#drinkCategoriesAndDrinks" class="cursor-pointer"
-          ><button class="categoryBtn">All</button></a
-        >
+        <img class="arrow" src="./img-icons/icons/arrow.svg" alt="" />
       </article>
     </main>
 
     <!--SECOND PAGE  -->
 
     <article class="secondPage">
-      <section class="dropdown desktop menu">
-        <!-- <img src="img-icons/img/filter.png" onclick="dropDown()" class="filterbtn" alt="filterbtn"> -->
+      <section class="dropdown desktopMenu">
+        <img
+          src="img-icons/img/filter.png"
+          onclick="dropDown()"
+          class="filterbtn"
+          alt="filterbtn"
+        />
         <section class="checkbox" id="checkbox">
           <section class="search-box">
             <input
@@ -112,99 +108,8 @@
           <br />
 
           <label class="container" id="priceRange">Price Range</label>
-          <!--   <input id="priceInput" type="range" name="points" min="10" max="100"> -->
-          <input
-            type="range"
-            name="points"
-            min="10"
-            max="100"
-            oninput="updateTextInput(this.value);"
-          />
-          <input id="priceOutput" type="text" value="" />
-        </section>
-      </section>
-
-      <section class="dropdown mobileMenu">
-        <img
-          src="img-icons/img/filter.png"
-          onclick="dropDown()"
-          class="filterbtn"
-          alt="filterbtn"
-        />
-        <section class="checkbox">
-          <label class="container inputsFilters"
-            >Non-Alcoholic
-            <input
-              id="non-alcoholInput"
-              class="isAlco inputsFilters"
-              value="not"
-              type="checkbox"
-            />
-            <span class="checkmark"></span>
-          </label>
-
-          <label class="container"
-            >Alcoholic
-            <input
-              id="alcoholInput"
-              class="isAlco inputsFilters"
-              value="1"
-              type="checkbox"
-            />
-            <span class="checkmark"></span>
-          </label>
-          <br />
-
-          <label class="container"
-            >Coffee
-            <input
-              id="justCoffee"
-              value="coffee"
-              class="drinkCategryInput inputsFilters"
-              type="checkbox"
-            />
-            <span class="checkmark"></span>
-          </label>
-
-          <label class="container"
-            >Beers
-            <input
-              id="justBeer"
-              class="drinkCategryInput inputsFilters"
-              value="beers"
-              type="checkbox"
-            />
-            <span class="checkmark"></span>
-          </label>
-
-          <label class="container"
-            >Cocktails
-            <input
-              id="justCocktail"
-              class="drinkCategryInput inputsFilters"
-              value="cocktails"
-              type="checkbox"
-            />
-            <span class="checkmark"></span>
-          </label>
-
-          <label class="container"
-            >Soft Drinks
-            <input
-              id="justSoftDrinks"
-              class="drinkCategryInput inputsFilters"
-              value="soft drinks"
-              type="checkbox"
-            />
-            <span class="checkmark"></span>
-          </label>
-          <br />
-
-          <label class="container" id="priceRange">Price Range</label>
-          <!--   <input id="priceInput" type="range" name="points" min="10" max="100"> -->
           <input
             id="priceInput"
-            class=""
             type="range"
             name="points"
             min="10"
@@ -212,20 +117,6 @@
             oninput="updateTextInput(this.value);"
           />
           <input id="priceOutput" type="text" value="" />
-        </section>
-
-        <section class="search-box">
-          <input
-            id="search-txt"
-            class="search-txt"
-            type="text"
-            name=""
-            placeholder="Search by name/address"
-          />
-          <button id="search-btn" type="submit" class="search-btn">
-            <i class="fa fa-search"></i>
-            <img src="img-icons/img/index.png" alt="searchicon" />
-          </button>
         </section>
       </section>
 
@@ -286,8 +177,16 @@
         document.getElementById("priceOutput").value = val;
       }
 
+      let clicks = 0;
+
       function dropDown() {
-        document.getElementById("checkbox").classList.toggle("show");
+        clicks++;
+        document.getElementById("checkbox").style.display = "flex";
+
+        if (clicks == 2) {
+          clicks = 0;
+          document.getElementById("checkbox").style.display = "none";
+        }
       }
     </script>
   </body>
