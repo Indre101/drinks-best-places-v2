@@ -510,6 +510,18 @@ main h2 {
 
 }
 
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.coffee {}
+
+
+
 
 .drinkName:hover {
     background-color: #b3a9ac;

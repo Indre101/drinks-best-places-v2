@@ -86,6 +86,7 @@ function addDrinks(drinks) {
 
   const categoriesHeadings = document.querySelectorAll(".categoryName");
 
+
   // ASSIGN ID
 
   function filterByNameOrAdress(classNameOf) {
@@ -113,83 +114,17 @@ function addDrinks(drinks) {
   }
   // register the handler
   document.addEventListener("keydown", doc_keyUp, false);
+
+
+  const allTheDrinks = document.querySelectorAll(".oneDrink");
+
+
+
 }
 
-// FILTERING THE CATEGORIES NAMES
-let filteredCategoriesArray = () =>
-  categoryNamesArr.filter(function (item, index) {
-    return categoryNamesArr.indexOf(item) >= index;
-  });
-
-let placeArr = [];
-// DRINKS OBJECT CONSTRUCTOR
-function DrinkObject(
-  drinkId,
-  category,
-  drinkName,
-  shotDescription,
-  alcohol,
-  image
-) {
-  this.drinkId = drinkId;
-  this.category = category;
-  this.drinkName = drinkName;
-  this.shotDescription = shotDescription;
-  this.alcohol = alcohol;
-  this.image = image;
-  this.places = [];
-}
-
-const createNewPlace = place =>
-  new PlaceObject(
-    place.gsx$placename.$t,
-    place.gsx$adddress.$t,
-    place.gsx$drinkid.$t,
-    place.gsx$drinkprice.$t,
-    place.gsx$imageoftheplace.$t,
-    place.gsx$starrate.$t,
-    place.gsx$linktotheplacewebsite.$t,
-    place.gsx$placedescribtion.$t
-  );
-
-// SECOND FETCH FOR PLACES
-const getPlaces = () =>
-  fetch(placesUrl)
-  .then(res => res.json())
-  .then(place => place.feed.entry.map(createNewPlace));
-
-const addPlacesToDrinks = () => {
-  for (let index = 0; index < drinkObjectArray.length; index++) {
-    for (let j = 0; j < places.length; j++) {
-      if (drinkObjectArray[index].drinkId == places[j].drinkId) {
-        drinkObjectArray[index].places.push(places[j]);
-      }
-    }
-  }
-};
 
 
-
-
-let alcoAndNonAlcofilteredDrinks = [];
-let alcoAndNonAlcofilteredDrinksNoRepeat = () =>
-  alcoAndNonAlcofilteredDrinks.filter(function (item, index) {
-    return alcoAndNonAlcofilteredDrinks.indexOf(item) >= index;
-  });
-
-let filterResults = [];
-let filterResultsNoRepeat = () =>
-  filterResults.filter(function (item, index) {
-    return filterResults.indexOf(item) >= index;
-  });
-let filteredDrinks = [];
-// filteredDrinks = filteredDrinks.concat(alcoAndNonAlcofilteredDrinksNoRepeat());
-let filteredDrinksNoRepat = () =>
-  filteredDrinks.filter(function (item, index) {
-    return filteredDrinks.indexOf(item) >= index;
-  });
-
-// FILTER ACCORDING TO THE CATEGORY
+// Start
 const drinkCategryInput = document.querySelectorAll(".drinkCategryInput");
 
 function testIngf(inputArrays) {
@@ -203,15 +138,6 @@ function testIngf(inputArrays) {
 
 
 
-function checkIfchecked(checkbox) {
-  if (checkbox.checked === true) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-
 
 // FILTER IF WITH ALCOHOL
 isAlcoInputs.forEach(isAlc => {
@@ -219,11 +145,9 @@ isAlcoInputs.forEach(isAlc => {
 });
 
 
-let clickCount = 0;
 
 function getTheAlcoholDrinksOrNone() {
   parentDrinkCategoriesAndDrinks.innerHTML = "";
-  console.log(document.querySelectorAll(""))
 
   if (testIngf(isAlcoInputs) && !testIngf(drinkCategryInput)) {
     let sorted = [];
@@ -313,6 +237,87 @@ function getTheAlcoholDrinksOrNone() {
   }
 }
 
+// THE END
+
+
+
+// FILTERING THE CATEGORIES NAMES
+let filteredCategoriesArray = () =>
+  categoryNamesArr.filter(function (item, index) {
+    return categoryNamesArr.indexOf(item) >= index;
+  });
+
+let placeArr = [];
+// DRINKS OBJECT CONSTRUCTOR
+function DrinkObject(
+  drinkId,
+  category,
+  drinkName,
+  shotDescription,
+  alcohol,
+  image
+) {
+  this.drinkId = drinkId;
+  this.category = category;
+  this.drinkName = drinkName;
+  this.shotDescription = shotDescription;
+  this.alcohol = alcohol;
+  this.image = image;
+  this.places = [];
+}
+
+const createNewPlace = place =>
+  new PlaceObject(
+    place.gsx$placename.$t,
+    place.gsx$adddress.$t,
+    place.gsx$drinkid.$t,
+    place.gsx$drinkprice.$t,
+    place.gsx$imageoftheplace.$t,
+    place.gsx$starrate.$t,
+    place.gsx$linktotheplacewebsite.$t,
+    place.gsx$placedescribtion.$t
+  );
+
+// SECOND FETCH FOR PLACES
+const getPlaces = () =>
+  fetch(placesUrl)
+  .then(res => res.json())
+  .then(place => place.feed.entry.map(createNewPlace));
+
+const addPlacesToDrinks = () => {
+  for (let index = 0; index < drinkObjectArray.length; index++) {
+    for (let j = 0; j < places.length; j++) {
+      if (drinkObjectArray[index].drinkId == places[j].drinkId) {
+        drinkObjectArray[index].places.push(places[j]);
+      }
+    }
+  }
+};
+
+
+
+
+let alcoAndNonAlcofilteredDrinks = [];
+let alcoAndNonAlcofilteredDrinksNoRepeat = () =>
+  alcoAndNonAlcofilteredDrinks.filter(function (item, index) {
+    return alcoAndNonAlcofilteredDrinks.indexOf(item) >= index;
+  });
+
+let filterResults = [];
+let filterResultsNoRepeat = () =>
+  filterResults.filter(function (item, index) {
+    return filterResults.indexOf(item) >= index;
+  });
+let filteredDrinks = [];
+// filteredDrinks = filteredDrinks.concat(alcoAndNonAlcofilteredDrinksNoRepeat());
+let filteredDrinksNoRepat = () =>
+  filteredDrinks.filter(function (item, index) {
+    return filteredDrinks.indexOf(item) >= index;
+  });
+
+// FILTER ACCORDING TO THE CATEGORY
+
+
 function pushDrinkObjects(param) {
   let sorted = drinkObjectArray.filter(drink => drink.alcohol == param);
   sorted.forEach(e => {
@@ -327,7 +332,6 @@ drinkCategryInput.forEach(drinkCategory => {
 // FILTER BY CATEGORY
 
 function getJustCategoryDrinks() {
-  // let clickCount = 0;
   parentDrinkCategoriesAndDrinks.innerHTML = "";
 
   if (testIngf(inputsFilters)) {
@@ -422,46 +426,46 @@ function getJustCategoryDrinks() {
 }
 
 // FILTER BY PRICE
-const filterByPrice = drinks => {
-  const filtered = drinks.map(drink => {
-    return drink.places.filter(place => {
-      return parseInt(place.drinkPrice) <= parseInt(priceInput.value);
-    });
-  });
+// const filterByPrice = drinks => {
+//   const filtered = drinks.map(drink => {
+//     return drink.places.filter(place => {
+//       return parseInt(place.drinkPrice) <= parseInt(priceInput.value);
+//     });
+//   });
 
-  return filtered;
-};
+//   return filtered;
+// };
 
-priceInput.addEventListener("click", showFilteredByPrice);
+// priceInput.addEventListener("click", showFilteredByPrice);
 
 // FILTER BY PRICE
 let filteredDrinksByPrice = [];
 
-function showFilteredByPrice() {
-  parentDrinkCategoriesAndDrinks.innerHTML = "";
+// function showFilteredByPrice() {
+//   parentDrinkCategoriesAndDrinks.innerHTML = "";
 
-  if (filteredDrinksNoRepat().length == 0 || filterResults.length == 0) {
-    filteredDrinksByPrice = [];
-    const filteredByPriceCall = filterByPrice(drinkObjectArray);
+//   if (filteredDrinksNoRepat().length == 0 || filterResults.length == 0) {
+//     filteredDrinksByPrice = [];
+//     const filteredByPriceCall = filterByPrice(drinkObjectArray);
 
-    for (let index = 0; index < drinkObjectArray.length; index++) {
-      if (filteredByPriceCall[index].length != 0) {
-        filteredDrinksByPrice.push(drinkObjectArray[index]);
-      }
-    }
-  } else if (filteredDrinksNoRepat().length > 0) {
-    filteredDrinksByPrice = [];
-    const filteredByPriceCallFIltered = filterByPrice(filteredDrinksNoRepat());
+//     for (let index = 0; index < drinkObjectArray.length; index++) {
+//       if (filteredByPriceCall[index].length != 0) {
+//         filteredDrinksByPrice.push(drinkObjectArray[index]);
+//       }
+//     }
+//   } else if (filteredDrinksNoRepat().length > 0) {
+//     filteredDrinksByPrice = [];
+//     const filteredByPriceCallFIltered = filterByPrice(filteredDrinksNoRepat());
 
-    for (let index = 0; index < filteredDrinksNoRepat().length; index++) {
-      if (filteredByPriceCallFIltered[index].length != 0) {
-        filteredDrinksByPrice.push(filteredDrinksNoRepat()[index]);
-      }
-    }
-  }
+//     for (let index = 0; index < filteredDrinksNoRepat().length; index++) {
+//       if (filteredByPriceCallFIltered[index].length != 0) {
+//         filteredDrinksByPrice.push(filteredDrinksNoRepat()[index]);
+//       }
+//     }
+//   }
 
-  addDrinks(filteredDrinksByPrice);
-}
+//   addDrinks(filteredDrinksByPrice);
+// }
 
 const main = () => {
   getPlaces().then(res => {
@@ -498,6 +502,7 @@ function appendDrinkCards(drinkObject, drinkCardContainer) {
 
   const clnDrink = oneDrinkTemplate.cloneNode(true);
 
+  clnDrink.querySelector(".oneDrink").classList.add(`${drinkObject.category.split(' ').join('') }`);
   const drinkImg = clnDrink.querySelector(
     ".drinkImg")
 
@@ -506,7 +511,7 @@ function appendDrinkCards(drinkObject, drinkCardContainer) {
   clnDrink.querySelector(".drinkName").textContent = drinkObject.drinkName;
 
   const placeList = clnDrink.querySelector(".placeList");
-
+  clnDrink.querySelector(".category").textContent = drinkObject.category;
   clnDrink.querySelector(".drinkName").textContent = drinkObject.drinkname;
 
   clnDrink.querySelector(".oneDrinkContainer").onclick = function () {
