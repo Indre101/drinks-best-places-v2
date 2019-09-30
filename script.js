@@ -31,6 +31,7 @@ const searchBtn = document.getElementById("search-btn");
 const isAlcoInputs = document.querySelectorAll(".isAlco");
 const inputsFilters = document.querySelectorAll(".inputsFilters");
 
+
 let drinkObjectArray = [];
 let categoryNamesArr = [];
 let places = [];
@@ -41,7 +42,6 @@ fetch(drinksUrl)
     return res.json();
   })
   .then(dataObject => dataObject.feed.entry.forEach(createDrinkObj))
-  .then(addCategoryButtons);
 
 // FIRST FUNCTION  CREATES DRINK OBJECTTS WITH PLACES
 const createDrinkObj = drinkObject => {
@@ -56,15 +56,10 @@ const createDrinkObj = drinkObject => {
   );
 
   drinkObjectArray.push(drinkObjectCard);
-  // drinkObjectCard.placesTest();
   categoryNamesArr.push(drinkObjectCard.category);
 };
 
-// SECOND FUNCTION CREATED CATEGORY BUTTONS
-function addCategoryButtons() {
-  const filteredCategoriesNamesOnly = filteredCategoriesArray();
 
-}
 
 // THIRD FUNCTION TO SEPARATE AND ADD DRINK CARDS TO RIGHT CATEGORIES
 function addDrinks(drinks) {
@@ -86,44 +81,12 @@ function addDrinks(drinks) {
       }
     });
 
-    // const testK = cloneDrinksPageTemplate.querySelectorAll(".oneDrink")
-    // const downBtn = cloneDrinksPageTemplate.querySelector(".down");
-    // console.log(downBtn)
-
-    // let scrollAmount = 0
-
-    // downBtn.onclick = function () {
-    //   scrollAmount += 200
-
-    //   testK.forEach(element => {
-
-    //     element.style.transform = `translateY(-${scrollAmount}px)`
-    //   });
-    // }
-
-
-
     parentDrinkCategoriesAndDrinks.appendChild(cloneDrinksPageTemplate);
   });
 
   const categoriesHeadings = document.querySelectorAll(".categoryName");
-  const navigationButtons = document.querySelectorAll(".categoryLink");
 
   // ASSIGN ID
-  categoriesHeadings.forEach(e => {
-    e.id = e.textContent.split(" ").join("");
-  });
-
-  // ASSIGN ID'S AS LINKS
-  navigationButtons.forEach(btn => {
-    btn.href = `#${btn.textContent.split(" ").join("")}`;
-  });
-
-  // SEARCH TAB
-  // const drinkNames = document.querySelectorAll(".oneDrink");
-  // const placeAdrres = document.querySelectorAll(".placeAdress");
-  // searchBtn.addEventListener("click", filterByNameOrAdress);
-  // searchBtn.addEventListener("click", filterByNameOrAdress);
 
   function filterByNameOrAdress(classNameOf) {
     const drinkNames = document.querySelectorAll(classNameOf);
@@ -205,6 +168,9 @@ const addPlacesToDrinks = () => {
   }
 };
 
+
+
+
 let alcoAndNonAlcofilteredDrinks = [];
 let alcoAndNonAlcofilteredDrinksNoRepeat = () =>
   alcoAndNonAlcofilteredDrinks.filter(function (item, index) {
@@ -235,6 +201,8 @@ function testIngf(inputArrays) {
   }
 }
 
+
+
 function checkIfchecked(checkbox) {
   if (checkbox.checked === true) {
     return true;
@@ -243,18 +211,19 @@ function checkIfchecked(checkbox) {
   }
 }
 
+
+
 // FILTER IF WITH ALCOHOL
 isAlcoInputs.forEach(isAlc => {
   isAlc.addEventListener("click", getTheAlcoholDrinksOrNone);
 });
 
-// alcoholInput.addEventListener("click", getTheAlcoholDrinksOrNone);
-// nonAlco.addEventListener("click", getTheAlcoholDrinksOrNone);
 
 let clickCount = 0;
 
 function getTheAlcoholDrinksOrNone() {
   parentDrinkCategoriesAndDrinks.innerHTML = "";
+  console.log(document.querySelectorAll(""))
 
   if (testIngf(isAlcoInputs) && !testIngf(drinkCategryInput)) {
     let sorted = [];
