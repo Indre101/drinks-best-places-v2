@@ -536,9 +536,12 @@ function appendDrinkCards(drinkObject, drinkCardContainer) {
   //   // CLONE OF DRINKS TEMPLATE
 
   const clnDrink = oneDrinkTemplate.cloneNode(true);
-  clnDrink.querySelector(
-    ".drinkImg"
-  ).src = `./img-icons/img/${drinkObject.image}.png`;
+
+  const drinkImg = clnDrink.querySelector(
+    ".drinkImg")
+
+
+  drinkImg.src = `./img-icons/img/${drinkObject.image}.png`;
   clnDrink.querySelector(".drinkName").textContent = drinkObject.drinkName;
 
   const placeList = clnDrink.querySelector(".placeList");
@@ -546,6 +549,7 @@ function appendDrinkCards(drinkObject, drinkCardContainer) {
   clnDrink.querySelector(".drinkName").textContent = drinkObject.drinkname;
 
   clnDrink.querySelector(".oneDrinkContainer").onclick = function () {
+    drinkImg.classList.toggle("drinkImgHeight");
     placeList.classList.toggle("d-none");
   };
 

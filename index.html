@@ -43,6 +43,18 @@
       <section class="dropdown desktop menu">
         <!-- <img src="img-icons/img/filter.png" onclick="dropDown()" class="filterbtn" alt="filterbtn"> -->
         <section class="checkbox" id="checkbox">
+          <section class="search-box">
+            <input
+              class="search-txt"
+              type="text"
+              name=""
+              placeholder="Search by name/address"
+            />
+            <button type="submit" class="search-btn">
+              <i class="fa fa-search"></i>
+              <img src="img-icons/img/index.png" alt="searchicon" />
+            </button>
+          </section>
           <label class="container inputsFilters"
             >Non-Alcoholic
             <input class="isAlco inputsFilters" value="not" type="checkbox" />
@@ -54,6 +66,7 @@
             <input class="isAlco inputsFilters" value="1" type="checkbox" />
             <span class="checkmark"></span>
           </label>
+          <hr />
           <br />
 
           <label class="container"
@@ -95,6 +108,7 @@
             />
             <span class="checkmark"></span>
           </label>
+          <hr />
           <br />
 
           <label class="container" id="priceRange">Price Range</label>
@@ -107,19 +121,6 @@
             oninput="updateTextInput(this.value);"
           />
           <input id="priceOutput" type="text" value="" />
-        </section>
-
-        <section class="search-box">
-          <input
-            class="search-txt"
-            type="text"
-            name=""
-            placeholder="Search by name/address"
-          />
-          <button type="submit" class="search-btn">
-            <i class="fa fa-search"></i>
-            <img src="img-icons/img/index.png" alt="searchicon" />
-          </button>
         </section>
       </section>
 
@@ -242,10 +243,10 @@
         <template class="oneDrinkTemplate">
           <section class="oneDrink">
             <section class="oneDrinkContainer ">
-              <img class="drinkImg" src="" alt="" />
+              <img class="drinkImg drinkImgHeightLarge" src="" alt="" />
               <h3 class="drinkName"></h3>
             </section>
-            <section class="placeList "></section>
+            <section class="placeList d-none"></section>
           </section>
         </template>
 
