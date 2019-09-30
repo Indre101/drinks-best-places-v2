@@ -40,6 +40,8 @@ body {
 .secondPage {
     background-image: linear-gradient(to bottom, #ca54abb8, #0f0810), url(./img-icons/img/backgroundLandingPage.jpeg);
     height: 100vh;
+    display: grid;
+    grid-template-columns: 10% 90%;
 }
 
 .placeDescribtion {
@@ -121,8 +123,9 @@ h3 {
     width: 100%;
     transition: opacity 0.3s ease-in-out;
     object-fit: cover;
-    width: 300px;
-    height: 5rem;
+    /* width: 300px; */
+    /* height: 5rem; */
+    height: 200px;
     transition: opacity 0.3s ease-in-out;
     /* position: absolute; */
     border-radius: 15px 15px 0 0;
@@ -227,20 +230,34 @@ main h2 {
 }
 
 .drinkCategoriesAndDrinks {
+    /* display: grid;
+    margin-top: 3rem; */
+
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, auto));
-    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(50%, auto));
+    justify-content: center;
+    grid-gap: 50px 0;
+
     margin-top: 3rem;
+    flex-direction: column;
 }
 
 .oneCategoryContainer {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     align-items: center;
     box-shadow: 2px 2px 2px 2px #464546;
     /* background-color: #010101; */
     background-color: white;
     border-radius: 15px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 2px 2px 2px #464546;
+    background-color: white;
+    border-radius: 15px;
+    width: 400px;
+    justify-self: center;
 }
 
 /* Create a custom checkbox */
@@ -393,7 +410,7 @@ main h2 {
 
 .categoryName {
     width: 100%;
-    margin-bottom: 3rem;
+    /* margin-bottom: 3rem; */
     margin-top: 0;
     font-size: 35px;
     color: white;
@@ -405,21 +422,33 @@ main h2 {
 
 
 .oneDrink {
-    width: 300px;
+    /* width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+
+
+    width: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 50px 3rem;
 }
 
 .oneDrinkContainer {
-    margin: 1%;
+    /* margin: 1%; */
     cursor: pointer;
     width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+
+
+
 
 }
 
@@ -454,7 +483,7 @@ main h2 {
 }
 
 .drinksListContainer {
-    display: grid;
+    /* display: grid;
     flex-wrap: wrap;
     justify-content: space-around;
     grid-template-columns: repeat(auto-fill, minmax(300px, auto));
@@ -462,11 +491,24 @@ main h2 {
     align-items: flex-start;
     height: 600px;
     overflow: scroll;
+    scroll-behavior: smooth; */
+
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     scroll-behavior: smooth;
+    overflow-x: scroll;
+
 }
 
 .drinksListContainer::-webkit-scrollbar {
     width: 10px;
+}
+
+.mobileMenu {
+    display: none;
 }
 
 /* Track */
