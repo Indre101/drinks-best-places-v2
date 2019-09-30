@@ -118,6 +118,9 @@ function addDrinks(drinks) {
 
   const allTheDrinks = document.querySelectorAll(".oneDrink");
 
+  allTheDrinks.forEach(e => {
+    console.log(e.classList)
+  })
 
 
 }
@@ -127,117 +130,11 @@ function addDrinks(drinks) {
 // Start
 const drinkCategryInput = document.querySelectorAll(".drinkCategryInput");
 
-function testIngf(inputArrays) {
-  let elements = Array.from(inputArrays);
-  if (elements.every(item => item.checked != true)) {
-    return true;
-  } else {
-    return false;
-  }
-}
 
 
 
 
-// FILTER IF WITH ALCOHOL
-isAlcoInputs.forEach(isAlc => {
-  isAlc.addEventListener("click", getTheAlcoholDrinksOrNone);
-});
 
-
-
-function getTheAlcoholDrinksOrNone() {
-  parentDrinkCategoriesAndDrinks.innerHTML = "";
-
-  if (testIngf(isAlcoInputs) && !testIngf(drinkCategryInput)) {
-    let sorted = [];
-
-    filteredDrinks.filter(drink => {
-      drinkCategryInput.forEach(inputCat => {
-        if (
-          inputCat.checked &&
-          drink.category.toLowerCase() == inputCat.value.toLowerCase()
-        ) {
-          sorted.push(drink);
-        }
-      });
-    });
-
-    sorted.forEach(drink => {
-      filterResults.push(drink);
-    });
-
-    addDrinks(filterResultsNoRepeat());
-  } else if (testIngf(inputsFilters)) {
-    addDrinks(drinkObjectArray);
-  } else if (testIngf(drinkCategryInput) && !this.checked) {
-    let sorted = filteredDrinksNoRepat().filter(
-      drink => drink.alcohol == this.value
-    );
-
-    myArray = filteredDrinksNoRepat().filter(function (el) {
-      return !sorted.includes(el);
-    });
-
-    addDrinks(myArray);
-  } else if (testIngf(drinkCategryInput) && this.checked) {
-    let sorted = drinkObjectArray.filter(drink => drink.alcohol == this.value);
-
-    sorted.forEach(drink => {
-      filteredDrinks.push(drink);
-    });
-
-    addDrinks(filteredDrinksNoRepat());
-  } else if (!testIngf(isAlcoInputs) && !testIngf(drinkCategryInput)) {
-    let uncheckedAlcoInputs = [];
-    const getUncheckedAlcoInputs = () => {
-      uncheckedAlcoInputs = [];
-      for (let index = 0; index < isAlcoInputs.length; index++) {
-        if (!isAlcoInputs[index].checked) {
-          uncheckedAlcoInputs.push(isAlcoInputs[index]);
-        }
-      }
-    };
-    //
-
-    //
-
-    getUncheckedAlcoInputs();
-    drinksToRemove = [];
-    let drinksToAdd = [];
-
-    drinkObjectArray.filter(drink => {
-      drinkCategryInput.forEach(inp => {
-        if (
-          inp.checked &&
-          drink.alcohol == this.value &&
-          drink.category.toLowerCase() == inp.value.toLowerCase()
-        ) {
-          filterResults.push(drink);
-          drinksToAdd.push(drink);
-
-          return drink;
-        }
-      });
-    });
-
-    filteredDrinks.filter(drink => {
-      uncheckedAlcoInputs.forEach(alc => {
-        if (drink.alcohol == alc.value) {
-          drinksToRemove.push(drink);
-        }
-      });
-    });
-
-    filterResults = filterResults.filter(el => {
-      return !drinksToRemove.includes(el);
-    });
-
-    addDrinks(filterResultsNoRepeat());
-  }
-}
-
-// THE END
 
 
 
@@ -297,176 +194,6 @@ const addPlacesToDrinks = () => {
 
 
 
-let alcoAndNonAlcofilteredDrinks = [];
-let alcoAndNonAlcofilteredDrinksNoRepeat = () =>
-  alcoAndNonAlcofilteredDrinks.filter(function (item, index) {
-    return alcoAndNonAlcofilteredDrinks.indexOf(item) >= index;
-  });
-
-let filterResults = [];
-let filterResultsNoRepeat = () =>
-  filterResults.filter(function (item, index) {
-    return filterResults.indexOf(item) >= index;
-  });
-let filteredDrinks = [];
-// filteredDrinks = filteredDrinks.concat(alcoAndNonAlcofilteredDrinksNoRepeat());
-let filteredDrinksNoRepat = () =>
-  filteredDrinks.filter(function (item, index) {
-    return filteredDrinks.indexOf(item) >= index;
-  });
-
-// FILTER ACCORDING TO THE CATEGORY
-
-
-function pushDrinkObjects(param) {
-  let sorted = drinkObjectArray.filter(drink => drink.alcohol == param);
-  sorted.forEach(e => {
-    filteredDrinks.push(e);
-  });
-}
-
-drinkCategryInput.forEach(drinkCategory => {
-  drinkCategory.addEventListener("click", getJustCategoryDrinks);
-});
-
-// FILTER BY CATEGORY
-
-function getJustCategoryDrinks() {
-  parentDrinkCategoriesAndDrinks.innerHTML = "";
-
-  if (testIngf(inputsFilters)) {
-    addDrinks(drinkObjectArray);
-  } else if (!testIngf(isAlcoInputs) && testIngf(drinkCategryInput)) {
-    let sorted = drinkObjectArray.filter(drink => {
-      isAlcoInputs.forEach(inp => {
-        if (inp.checked && drink.alcohol == inp.value) {
-          filteredDrinks.push(drink);
-        }
-      });
-    });
-
-    addDrinks(filteredDrinksNoRepat());
-  } else if (!testIngf(isAlcoInputs) && !testIngf(drinkCategryInput)) {
-    // pushDrinkObjects(0);
-
-    // THE START
-
-    let uncheckedCategoryInputs = [];
-    const getUnChecked = () => {
-      uncheckedCategoryInputs = [];
-
-      for (let index = 0; index < drinkCategryInput.length; index++) {
-        if (!drinkCategryInput[index].checked) {
-          uncheckedCategoryInputs.push(drinkCategryInput[index]);
-        }
-      }
-    };
-
-    getUnChecked();
-
-    let valuesToDelete = [];
-
-    let sorted = drinkObjectArray.filter(drink => {
-      isAlcoInputs.forEach(inp => {
-        if (
-          inp.checked &&
-          drink.alcohol == inp.value &&
-          drink.category.toLowerCase() == this.value.toLowerCase()
-        ) {
-          // filteredDrinks.push(drink);
-          filterResults.push(drink);
-          // valuesToDelete.push(drink);
-        }
-      });
-    });
-
-    // filterResults.push
-
-    filteredDrinksNoRepat().filter(drink => {
-      // valuesToDelete = [];
-      uncheckedCategoryInputs.forEach(inpCat => {
-        if (drink.category.toLowerCase() == inpCat.value.toLowerCase()) {
-          valuesToDelete.push(drink);
-        }
-      });
-    });
-
-    filterResults = filteredDrinksNoRepat().filter(function (el) {
-      return !valuesToDelete.includes(el);
-    });
-
-    addDrinks(filterResults);
-
-    // THE END
-  } else if (testIngf(isAlcoInputs) && !this.checked) {
-    let sorted = filteredDrinksNoRepat().filter(
-      drink => drink.category.toLowerCase() == this.value.toLowerCase()
-    );
-
-    filteredDrinks = filteredDrinksNoRepat().filter(function (el) {
-      return !sorted.includes(el);
-    });
-
-    addDrinks(filteredDrinks);
-  } else if (testIngf(isAlcoInputs) && this.checked) {
-    let sorted = [];
-
-    drinkObjectArray.filter(drink => {
-      if (drink.category.toLowerCase() == this.value.toLowerCase()) {
-        sorted.push(drink);
-      }
-    });
-
-    sorted.forEach(drink => {
-      filteredDrinks.push(drink);
-    });
-
-    addDrinks(filteredDrinksNoRepat());
-  }
-}
-
-// FILTER BY PRICE
-// const filterByPrice = drinks => {
-//   const filtered = drinks.map(drink => {
-//     return drink.places.filter(place => {
-//       return parseInt(place.drinkPrice) <= parseInt(priceInput.value);
-//     });
-//   });
-
-//   return filtered;
-// };
-
-// priceInput.addEventListener("click", showFilteredByPrice);
-
-// FILTER BY PRICE
-let filteredDrinksByPrice = [];
-
-// function showFilteredByPrice() {
-//   parentDrinkCategoriesAndDrinks.innerHTML = "";
-
-//   if (filteredDrinksNoRepat().length == 0 || filterResults.length == 0) {
-//     filteredDrinksByPrice = [];
-//     const filteredByPriceCall = filterByPrice(drinkObjectArray);
-
-//     for (let index = 0; index < drinkObjectArray.length; index++) {
-//       if (filteredByPriceCall[index].length != 0) {
-//         filteredDrinksByPrice.push(drinkObjectArray[index]);
-//       }
-//     }
-//   } else if (filteredDrinksNoRepat().length > 0) {
-//     filteredDrinksByPrice = [];
-//     const filteredByPriceCallFIltered = filterByPrice(filteredDrinksNoRepat());
-
-//     for (let index = 0; index < filteredDrinksNoRepat().length; index++) {
-//       if (filteredByPriceCallFIltered[index].length != 0) {
-//         filteredDrinksByPrice.push(filteredDrinksNoRepat()[index]);
-//       }
-//     }
-//   }
-
-//   addDrinks(filteredDrinksByPrice);
-// }
-
 const main = () => {
   getPlaces().then(res => {
     places = res;
@@ -505,6 +232,15 @@ function appendDrinkCards(drinkObject, drinkCardContainer) {
   clnDrink.querySelector(".oneDrink").classList.add(`${drinkObject.category.split(' ').join('') }`);
   const drinkImg = clnDrink.querySelector(
     ".drinkImg")
+
+
+  if (drinkObject.alcohol == 1) {
+    clnDrink.querySelector(".oneDrink").classList.add("alcohol");
+
+  } else {
+    clnDrink.querySelector(".oneDrink").classList.add("noAlcohol");
+
+  }
 
 
   drinkImg.src = `./img-icons/img/${drinkObject.image}.png`;
