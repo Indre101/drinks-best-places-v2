@@ -47,7 +47,7 @@ body {
 .placeDescribtion {
     background-color: #231e0d;
     /* display: none; */
-    position: absolute;
+    position: relative;
     width: 250px;
     /* height: 20%; */
     align-self: center;
@@ -77,7 +77,7 @@ h3 {
     height: 250px;
     overflow-y: scroll;
     width: 100%;
-    margin-top: -0.6rem;
+    /* margin-top: -0.6rem; */
     border-radius: 0 0 15px 15px;
 }
 
@@ -121,15 +121,26 @@ h3 {
 
 .drinkImg {
     width: 100%;
-    transition: opacity 0.3s ease-in-out;
     object-fit: cover;
     /* width: 300px; */
     /* height: 5rem; */
-    height: 200px;
     transition: opacity 0.3s ease-in-out;
     /* position: absolute; */
     border-radius: 15px 15px 0 0;
     /* width: 300px; */
+}
+
+
+.drinkImgHeightLarge {
+    transition: height 0.3s ease-in-out;
+    height: 200px;
+
+}
+
+.drinkImgHeight {
+    transition: height 0.3s ease-in-out;
+
+    height: 0;
 }
 
 .drinkPrice {
@@ -195,13 +206,12 @@ main h2 {
 /* checkbox */
 .checkbox {
     border: none;
-    width: 200px;
-    margin-top: 5px;
-    background-color: #707070;
-    display: none;
+    background-color: #0a0505d9;
     position: absolute;
+    height: 100vh;
     z-index: 1;
     opacity: 0.9;
+    padding: 15%;
 }
 
 .show {
@@ -214,10 +224,15 @@ main h2 {
     position: relative;
     padding-left: 30px;
     margin-top: 10px;
-    margin-bottom: 12px;
+    margin-bottom: 50px;
     cursor: pointer;
     font-size: 15px;
     color: white;
+}
+
+
+#priceRange {
+    margin-bottom: 10px;
 }
 
 /* Hide the browser's default checkbox */
@@ -254,10 +269,11 @@ main h2 {
     display: flex;
     flex-direction: column;
     box-shadow: 2px 2px 2px 2px #464546;
-    background-color: white;
+    background-color: #ffffffb0;
     border-radius: 15px;
     width: 400px;
-    justify-self: center;
+    justify-self: self-end;
+    margin-right: 2rem;
 }
 
 /* Create a custom checkbox */
@@ -340,7 +356,6 @@ main h2 {
 .dropdown {
     position: relative;
     display: inline-block;
-    margin-top: 1rem;
 }
 
 /* search bar*/
@@ -348,7 +363,7 @@ main h2 {
     width: 250px;
     position: relative;
     display: flex;
-    margin: 10px;
+    margin: 50px 0px;
     float: right;
 }
 
@@ -410,11 +425,11 @@ main h2 {
 
 .categoryName {
     width: 100%;
-    /* margin-bottom: 3rem; */
-    margin-top: 0;
+    margin: 0;
     font-size: 35px;
     color: white;
-    background-color: gray;
+    background-image: linear-gradient(to bottom, #5f555cad, #0f0810);
+    border-radius: 15px 15px 0 0;
     /* color: #707070;
     background-color: #EFE7E7; */
     opacity: 0.7;
@@ -513,7 +528,7 @@ main h2 {
 
 /* Track */
 .drinksListContainer::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey;
+    box-shadow: inset 0 0 5px black;
     border-radius: 10px;
     margin-left: 10px;
 
@@ -521,7 +536,7 @@ main h2 {
 
 /* Handle */
 .drinksListContainer::-webkit-scrollbar-thumb {
-    background: #b3a9ac;
+
     border-radius: 10px;
 }
 
@@ -531,7 +546,8 @@ main h2 {
 }
 
 .drinksListContainer::-webkit-scrollbar-thumb {
-    background: #b3a9ac;
+    background-image: linear-gradient(to bottom, #ca54abb8, #0f0810);
+
     border-radius: 10px;
 }
 
@@ -666,7 +682,7 @@ slide:nth-child(4) {
 
 @media screen and (max-width: 700px) {
 
-    .categoryContainer {
+    /* .categoryContainer {
         flex-direction: column;
         width: 100%;
         justify-content: center;
@@ -675,5 +691,13 @@ slide:nth-child(4) {
     .categoryContainer a {
         margin: 0 auto;
         padding: 1rem;
+    } */
+}
+
+@media only screen and (max-width:1300px) {
+
+    .drinkCategoriesAndDrinks {
+        display: grid;
+        grid-template-columns: 1fr;
     }
 }
