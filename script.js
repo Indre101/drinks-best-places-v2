@@ -115,20 +115,70 @@ function addDrinks(drinks) {
   // register the handler
   document.addEventListener("keydown", doc_keyUp, false);
 
+  inputsFilters.forEach(e => {
+    e.onclick = function () {
+
+      filter()
+
+    }
+  })
+}
+
+
+
+
+
+const drinkCategryInput = document.querySelectorAll(".drinkCategryInput");
+
+function checkIfAllChecked(arr) {
+  let elements = Array.from(arr);
+  if (elements.every(item => item.checked != true)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+
+
+
+
+let inputsChecked = [];
+
+
+function filter() {
+
+  console.log("clicked")
 
   const allTheDrinks = document.querySelectorAll(".oneDrink");
 
-  allTheDrinks.forEach(e => {
-    console.log(e.classList)
-  })
+  if (checkIfAllChecked(inputsFilters)) {
 
+    allTheDrinks.forEach(drink => {
+      drink.classList.add("active");
+    })
+  } else if (!checkIfAllChecked(inputsFilters)) {
+
+    inputsChecked = []
+
+    inputsFilters.forEach(input => {
+
+      if (input.checked) {
+        inputsChecked.push(input.value)
+      }
+    })
+
+
+
+
+  }
 
 }
 
 
 
-// Start
-const drinkCategryInput = document.querySelectorAll(".drinkCategryInput");
+
 
 
 
@@ -224,6 +274,9 @@ function PlaceObject(
   this.description = description;
 }
 
+
+
+
 function appendDrinkCards(drinkObject, drinkCardContainer) {
   //   // CLONE OF DRINKS TEMPLATE
 
@@ -234,11 +287,11 @@ function appendDrinkCards(drinkObject, drinkCardContainer) {
     ".drinkImg")
 
 
-  if (drinkObject.alcohol == 1) {
+  if (drinkObject.alcohol == "alcohol") {
     clnDrink.querySelector(".oneDrink").classList.add("alcohol");
 
   } else {
-    clnDrink.querySelector(".oneDrink").classList.add("noAlcohol");
+    clnDrink.querySelector(".oneDrink").classList.add("nonAlcohol");
 
   }
 
@@ -262,6 +315,8 @@ function appendDrinkCards(drinkObject, drinkCardContainer) {
   // drinkObject.places.sort()
 
   function compare(a, b) {
+
+
     if (parseInt(a.drinkPrice) < parseInt(b.drinkPrice)) {
       return -1;
     }
@@ -312,5 +367,3 @@ function appendDrinkCards(drinkObject, drinkCardContainer) {
 }
 
 main();
-
-//

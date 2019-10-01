@@ -455,20 +455,24 @@ main h2 {
 
 
 .oneDrink {
-    /* width: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
-
 
     width: 600px;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 50px 3rem;
 }
+
+
+.active {
+    display: flex;
+
+}
+
+.hide {
+    display: none;
+}
+
 
 .oneDrinkContainer {
     /* margin: 1%; */
@@ -509,17 +513,6 @@ main h2 {
     margin-top: -65%; */
 
 }
-
-.show {
-    display: block;
-}
-
-.hide {
-    display: none;
-}
-
-.coffee {}
-
 
 
 
