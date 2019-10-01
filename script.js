@@ -116,10 +116,10 @@ function addDrinks(drinks) {
   document.addEventListener("keydown", doc_keyUp, false);
 
   inputsFilters.forEach(e => {
+
     e.onclick = function () {
-
-      filter()
-
+      const allTheDrinks = document.querySelectorAll(".oneDrink");
+      filter(allTheDrinks)
     }
   })
 }
@@ -147,12 +147,7 @@ function checkIfAllChecked(arr) {
 let inputsChecked = [];
 
 
-function filter() {
-
-  console.log("clicked")
-
-  const allTheDrinks = document.querySelectorAll(".oneDrink");
-
+function filter(allTheDrinks) {
   if (checkIfAllChecked(inputsFilters)) {
 
     allTheDrinks.forEach(drink => {
@@ -169,10 +164,32 @@ function filter() {
       }
     })
 
+    allTheDrinks.forEach(drink => {
+      console.log("jlæø")
+      console.log(drink.classList)
 
 
+      drink.classList.remove("active")
+      drink.classList.add("hide");
+
+
+      for (let index = 0; index < inputsChecked.length; index++) {
+
+        if (drink.classList.contains(inputsChecked[index])) {
+          drink.classList.remove("hide");
+          drink.classList.add("active");
+
+        }
+
+      }
+
+    })
 
   }
+
+
+
+
 
 }
 
@@ -282,7 +299,7 @@ function appendDrinkCards(drinkObject, drinkCardContainer) {
 
   const clnDrink = oneDrinkTemplate.cloneNode(true);
 
-  clnDrink.querySelector(".oneDrink").classList.add(`${drinkObject.category.split(' ').join('') }`);
+  clnDrink.querySelector(".oneDrink").classList.add(`${drinkObject.category.toLowerCase().split(' ').join('') }`);
   const drinkImg = clnDrink.querySelector(
     ".drinkImg")
 
