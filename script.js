@@ -34,6 +34,7 @@ const isAlcoInputs = document.querySelectorAll(".isAlco");
 const inputsFilters = document.querySelectorAll(".inputsFilters");
 
 
+
 let drinkObjectArray = [];
 let categoryNamesArr = [];
 let places = [];
@@ -136,6 +137,42 @@ function addDrinks(drinks) {
   })
 
 
+
+
+
+  priceInput.onmouseup = function () {
+
+    const allTheDrinks = document.querySelectorAll(".oneDrink");
+
+    let A = allTheDrinks.forEach(a => {
+      let placeListEachDrink = a.querySelectorAll(".placeInfoContainer")
+
+
+      placeListEachDrink.forEach(place => {
+
+        place.style.display = "none";
+
+
+        if (parseInt(place.querySelector(".drinkPrice").textContent) <= parseInt(priceInput.value)) {
+          place.style.display = "block";
+
+        }
+
+
+
+      })
+
+
+
+      //  a;
+    })
+
+
+
+
+  }
+
+
 }
 
 
@@ -162,13 +199,15 @@ let inputesCheckedSecond = [];
 
 
 
+
+
 function filter(inputs, otherInputs) {
+
 
   const allTheDrinks = document.querySelectorAll(".oneDrink");
 
   if (checkIfAllChecked(inputsFilters)) {
     allTheDrinks.forEach(drink => {
-      console.log(drink);
       drink.classList.remove("hide");
 
       drink.classList.add("active");
@@ -180,12 +219,13 @@ function filter(inputs, otherInputs) {
     inputs.forEach(input => {
 
       if (input.checked) {
-        inputsCheckedFirst.push(input.value)
+        inputsCheckedFirst.push(input.value.toLowerCase().split(' ').join(''))
       }
     })
 
+
+
     allTheDrinks.forEach(drink => {
-      // console.log(drink.classList)
 
 
       drink.classList.remove("active")
@@ -207,27 +247,29 @@ function filter(inputs, otherInputs) {
   } else if (!checkIfAllChecked(inputs) && !checkIfAllChecked(otherInputs)) {
 
     inputsCheckedFirst = []
+    inputesCheckedSecond = [];
 
     inputs.forEach(input => {
 
       if (input.checked) {
-        inputsCheckedFirst.push(input.value)
+        inputsCheckedFirst.push(input.value.toLowerCase().split(' ').join(''))
       }
     })
 
     otherInputs.forEach(input => {
 
       if (input.checked) {
-        inputesCheckedSecond.push(input.value)
+        inputesCheckedSecond.push(input.value.toLowerCase().split(' ').join(''))
       }
     })
 
     allTheDrinks.forEach(drink => {
-      // console.log(drink.classList)
 
 
       drink.classList.remove("active")
       drink.classList.add("hide");
+
+
 
 
       for (let index = 0; index < inputsCheckedFirst.length; index++) {
@@ -247,11 +289,10 @@ function filter(inputs, otherInputs) {
 
   }
 
-
-
-
-
 }
+
+
+
 
 
 
@@ -368,7 +409,7 @@ function appendDrinkCards(drinkObject, drinkCardContainer) {
     clnDrink.querySelector(".oneDrink").classList.add("alcohol");
 
   } else {
-    clnDrink.querySelector(".oneDrink").classList.add("nonAlcohol");
+    clnDrink.querySelector(".oneDrink").classList.add("nonalcohol");
 
   }
 
