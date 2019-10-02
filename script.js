@@ -24,6 +24,8 @@ let placeInfo = document.querySelector(".placeInfo").content;
 // FILTERS AND SORTING OPTIONS DOM ELEMENT
 const alcoholInput = document.getElementById("alcoholInput");
 const nonAlco = document.getElementById("non-alcoholInput");
+const drinkCategryInput = document.querySelectorAll(".drinkCategryInput");
+
 
 const priceInput = document.querySelector("#priceInput");
 const searchTxt = document.getElementById("search-txt");
@@ -115,20 +117,31 @@ function addDrinks(drinks) {
   // register the handler
   document.addEventListener("keydown", doc_keyUp, false);
 
-  inputsFilters.forEach(e => {
+
+
+
+  isAlcoInputs.forEach(e => {
 
     e.onclick = function () {
-      const allTheDrinks = document.querySelectorAll(".oneDrink");
-      filter(allTheDrinks)
+      filter(isAlcoInputs, drinkCategryInput)
     }
   })
+
+
+  drinkCategryInput.forEach(e => {
+
+    e.onclick = function () {
+      filter(drinkCategryInput, isAlcoInputs)
+    }
+  })
+
+
 }
 
 
 
 
 
-const drinkCategryInput = document.querySelectorAll(".drinkCategryInput");
 
 function checkIfAllChecked(arr) {
   let elements = Array.from(arr);
@@ -144,43 +157,90 @@ function checkIfAllChecked(arr) {
 
 
 
-let inputsChecked = [];
+let inputsCheckedFirst = [];
+let inputesCheckedSecond = [];
 
 
-function filter(allTheDrinks) {
+
+function filter(inputs, otherInputs) {
+
+  const allTheDrinks = document.querySelectorAll(".oneDrink");
+
   if (checkIfAllChecked(inputsFilters)) {
-
     allTheDrinks.forEach(drink => {
+      console.log(drink);
+      drink.classList.remove("hide");
+
       drink.classList.add("active");
     })
-  } else if (!checkIfAllChecked(inputsFilters)) {
+  } else if (!checkIfAllChecked(inputs) && checkIfAllChecked(otherInputs)) {
 
-    inputsChecked = []
+    inputsCheckedFirst = []
 
-    inputsFilters.forEach(input => {
+    inputs.forEach(input => {
 
       if (input.checked) {
-        inputsChecked.push(input.value)
+        inputsCheckedFirst.push(input.value)
       }
     })
 
     allTheDrinks.forEach(drink => {
-      console.log("jlæø")
-      console.log(drink.classList)
+      // console.log(drink.classList)
 
 
       drink.classList.remove("active")
       drink.classList.add("hide");
 
 
-      for (let index = 0; index < inputsChecked.length; index++) {
+      for (let index = 0; index < inputsCheckedFirst.length; index++) {
 
-        if (drink.classList.contains(inputsChecked[index])) {
+        if (drink.classList.contains(inputsCheckedFirst[index])) {
           drink.classList.remove("hide");
           drink.classList.add("active");
 
         }
 
+      }
+
+    })
+
+  } else if (!checkIfAllChecked(inputs) && !checkIfAllChecked(otherInputs)) {
+
+    inputsCheckedFirst = []
+
+    inputs.forEach(input => {
+
+      if (input.checked) {
+        inputsCheckedFirst.push(input.value)
+      }
+    })
+
+    otherInputs.forEach(input => {
+
+      if (input.checked) {
+        inputesCheckedSecond.push(input.value)
+      }
+    })
+
+    allTheDrinks.forEach(drink => {
+      // console.log(drink.classList)
+
+
+      drink.classList.remove("active")
+      drink.classList.add("hide");
+
+
+      for (let index = 0; index < inputsCheckedFirst.length; index++) {
+
+        for (let j = 0; j < inputesCheckedSecond.length; j++) {
+
+
+          if (drink.classList.contains(inputsCheckedFirst[index]) && drink.classList.contains(inputesCheckedSecond[j])) {
+            drink.classList.remove("hide");
+            drink.classList.add("active");
+
+          }
+        }
       }
 
     })
