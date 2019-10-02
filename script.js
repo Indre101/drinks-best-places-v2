@@ -144,8 +144,11 @@ function addDrinks(drinks) {
 
     const allTheDrinks = document.querySelectorAll(".oneDrink");
 
-    let A = allTheDrinks.forEach(a => {
-      let placeListEachDrink = a.querySelectorAll(".placeInfoContainer")
+    let A = allTheDrinks.forEach(drink => {
+      let placeListEachDrink = drink.querySelectorAll(".placeInfoContainer")
+
+      drink.classList.remove("active")
+      drink.classList.add("hide")
 
 
       placeListEachDrink.forEach(place => {
@@ -155,24 +158,16 @@ function addDrinks(drinks) {
 
         if (parseInt(place.querySelector(".drinkPrice").textContent) <= parseInt(priceInput.value)) {
           place.style.display = "block";
+          drink.classList.remove("hide")
+          drink.classList.add("active")
+          console.log(placeListEachDrink)
 
         }
 
 
-
       })
-
-
-
-      //  a;
     })
-
-
-
-
   }
-
-
 }
 
 
